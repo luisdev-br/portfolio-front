@@ -1,18 +1,26 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import styles from "./Projects.module.css";
-
-import projects from "../../data/projects.json";
 import { ProjectCard } from "./ProjectCard";
+import { API_URL } from "../../utils";  // Importando a constante API_URL
 
 export const Projects = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    // Requisição ao backend para pegar os projetos
+    fetch(`${API_URL}/projects`)  // Usando a constante API_URL
+      .then((response) => response.json())
+      .then((data) => setProjects(data))
+      .catch((error) => console.error("Erro ao carregar os projetos:", error));
+  }, []);
+
   return (
     <section className={styles.container} id="projects">
       <h2 className={styles.title}>Projects</h2>
       <div className={styles.projects}>
-        {projects.map((project, id) => {
-          return <ProjectCard key={id} project={project} />;
-        })}
+        {projects.map((project, id) => (
+          <ProjectCard key={id} project={project} />
+        ))}
       </div>
     </section>
   );
