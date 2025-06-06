@@ -6,12 +6,14 @@ import { API_URL } from "../../utils";  // Importando a constante API_URL
 export const Projects = () => {
   const [projects, setProjects] = useState([]);
 
-  useEffect(() => {
-  // Substitua pelo novo IP do backend
-  fetch("http://3.14.129.185:80/projects")
-    .then((response) => response.json())
-    .then((data) => setProjects(data))
-    .catch((error) => console.error("Erro ao carregar os projetos:", error));
+useEffect(() => {
+  // Requisição para a rota /projects do backend
+  fetch("http://3.16.137.128:80/projects")  // Alterado para o IP público da EC2
+    .then(response => response.json())
+    .then(data => setProjects(data))
+    .catch(error => {
+      console.error("Erro ao carregar os projetos:", error);
+    });
 }, []);
 
   return (
