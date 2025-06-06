@@ -7,12 +7,12 @@ export const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    // Requisição ao backend para pegar os projetos
-    fetch(`${API_URL}/projects`)  // Usando a constante API_URL
-      .then((response) => response.json())
-      .then((data) => setProjects(data))
-      .catch((error) => console.error("Erro ao carregar os projetos:", error));
-  }, []);
+  // Substitua pelo novo IP do backend
+  fetch("http://3.14.129.185:80/projects")
+    .then((response) => response.json())
+    .then((data) => setProjects(data))
+    .catch((error) => console.error("Erro ao carregar os projetos:", error));
+}, []);
 
   return (
     <section className={styles.container} id="projects">
