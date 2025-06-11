@@ -8,7 +8,7 @@ export const Projects = () => {
 
 useEffect(() => {
   // Requisição para a rota /projects do backend
-  fetch("http://3.145.53.193:80/projects")  // Alterado para o IP público da EC2
+  fetch("http://3.144.243.171:80/projects")  // Alterado para o IP público da EC2
     .then(response => response.json())
     .then(data => setProjects(data))
     .catch(error => {
